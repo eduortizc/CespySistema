@@ -1,0 +1,20 @@
+/* src/app/globals.css */
+
+/* Definimos la animación: de abajo hacia arriba y de transparente a visible */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Clase utilitaria para aplicar la animación */
+.animate-fade-in-up {
+  animation-name: fadeInUp;
+  animation-duration: 0.8s; /* Duración de la animación */
+  animation-fill-mode: both; /* Mantiene el estado final al terminar */
+}
