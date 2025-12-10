@@ -1,118 +1,192 @@
 // src/components/Services.js
 "use client"
 
-import { useState } from 'react';
+import { useEffect } from 'react';
 
 export default function Services() {
-  const [activeTab, setActiveTab] = useState('fisica');
+  useEffect(() => {
+    require('bootstrap/dist/js/bootstrap.bundle.min.js');
+  }, []);
 
   return (
-    // CAMBIO 1: Fondo oscuro para toda la sección y texto blanco
-    <section className="py-5 bg-dark text-white">
-      <div className="container">
+    <section className="py-5 bg-dark text-white position-relative overflow-hidden">
+      
+      <div className="container position-relative z-2">
         <div className="text-center mb-5">
-          {/* CAMBIO 2: Título con el color de acento */}
-          <h2 className="fw-bold text-warning">Nuestros Servicios</h2>
-          <p className="text-white-50">Soluciones integrales adaptadas a tus necesidades</p>
+          <h5 className="text-cespy text-uppercase letter-spacing-2">Nuestras Soluciones</h5>
+          <h2 className="display-4 fw-bold">Especialistas en Seguridad</h2>
+          <p className="text-white-50">Selecciona una categoría para ver el catálogo completo</p>
         </div>
 
-        {/* PESTAÑAS OSCURAS */}
-        {/* CAMBIO 3: Fondo de las pestañas gris oscuro (bg-secondary bg-opacity-25) */}
-        <ul className="nav nav-pills nav-fill mb-4 justify-content-center gap-2 p-1 bg-secondary bg-opacity-25 rounded-pill" style={{maxWidth: '800px', margin: '0 auto'}}>
-          <li className="nav-item">
-            <button 
-              // CAMBIO 4: Pestaña activa es AMARILLA (bg-warning text-dark), inactivas son blancas
-              className={`nav-link rounded-pill fw-bold ${activeTab === 'fisica' ? 'active bg-warning text-dark shadow' : 'text-white hover-warning'}`}
-              onClick={() => setActiveTab('fisica')}
-            >
-              👮 Seguridad Física
-            </button>
-          </li>
-          <li className="nav-item">
-            <button 
-              className={`nav-link rounded-pill fw-bold ${activeTab === 'electronica' ? 'active bg-warning text-dark shadow' : 'text-white hover-warning'}`}
-              onClick={() => setActiveTab('electronica')}
-            >
-              📹 Seguridad Electrónica
-            </button>
-          </li>
-          <li className="nav-item">
-            <button 
-              className={`nav-link rounded-pill fw-bold ${activeTab === 'limpieza' ? 'active bg-warning text-dark shadow' : 'text-white hover-warning'}`}
-              onClick={() => setActiveTab('limpieza')}
-            >
-              🧹 Limpieza
-            </button>
-          </li>
-        </ul>
-
-        {/* CONTENIDO (Tarjeta Oscura) */}
-        {/* CAMBIO 5: Tarjeta con fondo gris oscuro y borde dorado sutil */}
-        <div className="card border-warning border-opacity-25 bg-secondary bg-opacity-10 shadow-lg p-4 text-white">
-          <div className="row align-items-center">
-            
-            {/* Contenido Seguridad FÍSICA */}
-            {activeTab === 'fisica' && (
-              <>
-                <div className="col-md-6 mb-4 mb-md-0">
-                  <h3 className="text-warning mb-3">Guardias Intramuros y Escoltas</h3>
-                  <p className="lead fs-6">Personal altamente capacitado para proteger residencias, comercios e industrias.</p>
-                  <ul className="list-unstyled fs-5">
-                    <li className="mb-2">🛡️ Control de accesos riguroso</li>
-                    <li className="mb-2">📝 Bitácoras digitales</li>
-                    <li className="mb-2">🚛 Custodia de mercancía en tránsito</li>
-                  </ul>
+        <div className="row g-4 justify-content-center">
+          
+          {/* TARJETA 1: SEGURIDAD FÍSICA (Amarillo Cespy) */}
+          <div className="col-md-5">
+            <div className="card h-100 bg-secondary bg-opacity-10 border-cespy border-opacity-25 shadow-lg hover-scale transition-all">
+              <div className="card-body text-center p-5">
+                <div className="bg-cespy rounded-circle d-inline-flex align-items-center justify-content-center mb-4 shadow" style={{width: '80px', height: '80px'}}>
+                  <span className="fs-1">👮</span>
                 </div>
-                <div className="col-md-6 text-center">
-                  <div className="bg-dark rounded-3 overflow-hidden shadow" style={{height: '300px', backgroundImage: "url('https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?q=80&w=2940&auto=format&fit=crop')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
-                    {/* Foto de guardia (Unsplash por ahora) */}
+                <h3 className="fw-bold mb-3 text-white">Seguridad Física</h3>
+                <p className="text-white-50 mb-4">
+                  Protección presencial con elementos altamente capacitados para residencias, corporativos y custodia de valores.
+                </p>
+                <button 
+                  className="btn btn-outline-cespy btn-lg px-4 rounded-pill fw-bold"
+                  data-bs-toggle="modal" 
+                  data-bs-target="#modalFisica"
+                >
+                  Ver más información ➝
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* TARJETA 2: SEGURIDAD ELECTRÓNICA (Nuevo Azul Neón) */}
+          <div className="col-md-5">
+            {/* CAMBIO: border-cespy-blue */}
+            <div className="card h-100 bg-secondary bg-opacity-10 border-cespy-blue border-opacity-25 shadow-lg hover-scale transition-all">
+              <div className="card-body text-center p-5">
+                {/* CAMBIO: bg-cespy-blue */}
+                <div className="bg-cespy-blue rounded-circle d-inline-flex align-items-center justify-content-center mb-4 shadow" style={{width: '80px', height: '80px'}}>
+                  <span className="fs-1">📹</span>
+                </div>
+                <h3 className="fw-bold mb-3 text-white">Seguridad Electrónica</h3>
+                <p className="text-white-50 mb-4">
+                  Tecnología de punta para el monitoreo, control y respuesta inmediata ante incidentes.
+                </p>
+                {/* CAMBIO: btn-outline-cespy-blue */}
+                <button 
+                  className="btn btn-outline-cespy-blue btn-lg px-4 rounded-pill fw-bold"
+                  data-bs-toggle="modal" 
+                  data-bs-target="#modalElectronica"
+                >
+                  Ver más información ➝
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* ================= MODALES ================= */}
+      
+      {/* MODAL FÍSICA */}
+      <div className="modal fade" id="modalFisica" tabIndex="-1" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered modal-lg">
+          <div className="modal-content bg-dark border-cespy">
+            <div className="modal-header border-secondary">
+              <h5 className="modal-title text-cespy fw-bold">🛡️ Catálogo de Seguridad Física</h5>
+              <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body p-4">
+              <div className="row g-4 text-center">
+                <div className="col-6 col-md-3">
+                  <div className="p-3 bg-secondary bg-opacity-25 rounded h-100">
+                    <div className="fs-2 mb-2">🏛️</div>
+                    <h6 className="fw-bold text-white">Intramuros</h6>
                   </div>
                 </div>
-              </>
-            )}
-
-            {/* Contenido Seguridad ELECTRÓNICA */}
-            {activeTab === 'electronica' && (
-              <>
-                <div className="col-md-6 mb-4 mb-md-0">
-                  <h3 className="text-warning mb-3">Tecnología de Vigilancia</h3>
-                  <p className="lead fs-6">Sistemas avanzados para monitorear tu patrimonio 24/7 desde tu celular.</p>
-                  <ul className="list-unstyled fs-5">
-                    <li className="mb-2">📹 CCTV de alta definición IP</li>
-                    <li className="mb-2">⚡ Cercos eléctricos certificados</li>
-                    <li className="mb-2">🚨 Alarmas con respuesta inmediata</li>
-                  </ul>
-                </div>
-                <div className="col-md-6 text-center">
-                  <div className="bg-dark rounded-3 overflow-hidden shadow" style={{height: '300px', backgroundImage: "url('https://images.unsplash.com/photo-1557597774-9d273605df97?q=80&w=2940&auto=format&fit=crop')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
-                     {/* Foto de cámara */}
+                <div className="col-6 col-md-3">
+                  <div className="p-3 bg-secondary bg-opacity-25 rounded h-100">
+                    <div className="fs-2 mb-2">🕶️</div>
+                    <h6 className="fw-bold text-white">Guardaespaldas</h6>
                   </div>
                 </div>
-              </>
-            )}
-
-             {/* Contenido LIMPIEZA */}
-             {activeTab === 'limpieza' && (
-              <>
-                <div className="col-md-6 mb-4 mb-md-0">
-                  <h3 className="text-warning mb-3">Limpieza Profesional</h3>
-                  <p className="lead fs-6">Mantenimiento integral y sanitización para oficinas y corporativos.</p>
-                  <ul className="list-unstyled fs-5">
-                    <li className="mb-2">🧼 Personal de planta confiable</li>
-                    <li className="mb-2">🧴 Insumos de alta calidad incluidos</li>
-                    <li className="mb-2">✨ Pulido de pisos y desinfección</li>
-                  </ul>
-                </div>
-                <div className="col-md-6 text-center">
-                   <div className="bg-dark rounded-3 overflow-hidden shadow" style={{height: '300px', backgroundImage: "url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2940&auto=format&fit=crop')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
-                     {/* Foto de limpieza */}
+                <div className="col-6 col-md-3">
+                  <div className="p-3 bg-secondary bg-opacity-25 rounded h-100">
+                    <div className="fs-2 mb-2">🚚</div>
+                    <h6 className="fw-bold text-white">Custodias</h6>
                   </div>
                 </div>
-              </>
-            )}
+                <div className="col-6 col-md-3">
+                  <div className="p-3 bg-secondary bg-opacity-25 rounded h-100">
+                    <div className="fs-2 mb-2">🚙</div>
+                    <h6 className="fw-bold text-white">Vehículos Blindados</h6>
+                  </div>
+                </div>
+
+                <hr className="border-secondary my-4" />
+                <h6 className="text-start text-cespy mb-3">SERVICIOS DE VALOR AGREGADO:</h6>
+                
+                <div className="col-6 col-md-3">
+                  <div className="p-2 border border-secondary rounded text-white-50">
+                    <small>🚪 Apertura y cierre de negocios</small>
+                  </div>
+                </div>
+                <div className="col-6 col-md-3">
+                  <div className="p-2 border border-secondary rounded text-white-50">
+                    <small>🚔 Patrullaje</small>
+                  </div>
+                </div>
+                <div className="col-6 col-md-3">
+                  <div className="p-2 border border-secondary rounded text-white-50">
+                    <small>📚 Capacitación PROCE</small>
+                  </div>
+                </div>
+                <div className="col-6 col-md-3">
+                  <div className="p-2 border border-secondary rounded text-white-50">
+                    <small>📝 Control de Confianza</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer border-secondary">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <a href="/contacto" className="btn btn-cespy">Cotizar servicio</a>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* MODAL ELECTRÓNICA (Actualizado con el Nuevo Azul) */}
+      <div className="modal fade" id="modalElectronica" tabIndex="-1" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered modal-lg">
+          {/* CAMBIO: border-cespy-blue */}
+          <div className="modal-content bg-dark border-cespy-blue">
+            <div className="modal-header border-secondary">
+              {/* CAMBIO: text-cespy-blue */}
+              <h5 className="modal-title text-cespy-blue fw-bold">📡 Catálogo de Seguridad Electrónica</h5>
+              <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body p-4">
+              <div className="row g-4 text-center">
+                <div className="col-6 col-md-3">
+                  <div className="p-3 bg-secondary bg-opacity-25 rounded h-100">
+                    <div className="fs-2 mb-2">🛰️</div>
+                    <h6 className="fw-bold text-white">Rastreo Satelital</h6>
+                  </div>
+                </div>
+                <div className="col-6 col-md-3">
+                  <div className="p-3 bg-secondary bg-opacity-25 rounded h-100">
+                    <div className="fs-2 mb-2">🔐</div>
+                    <h6 className="fw-bold text-white">Control de Acceso</h6>
+                  </div>
+                </div>
+                <div className="col-6 col-md-3">
+                  <div className="p-3 bg-secondary bg-opacity-25 rounded h-100">
+                    <div className="fs-2 mb-2">📷</div>
+                    <h6 className="fw-bold text-white">CCTV</h6>
+                  </div>
+                </div>
+                <div className="col-6 col-md-3">
+                  <div className="p-3 bg-secondary bg-opacity-25 rounded h-100">
+                    <div className="fs-2 mb-2">🔊</div>
+                    <h6 className="fw-bold text-white">Alarmas</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer border-secondary">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              {/* CAMBIO: btn-outline-cespy-blue */}
+              <a href="/contacto" className="btn btn-outline-cespy-blue">Cotizar tecnología</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 }
