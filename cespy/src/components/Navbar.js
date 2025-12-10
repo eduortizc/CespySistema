@@ -1,15 +1,68 @@
 // src/components/Navbar.js
-"use client" // <--- Obligatorio porque el menú colapsable usa interactividad
+
+"use client"
 
 import Link from 'next/link';
+import Image from 'next/image';
+import React, { useState, useEffect } from 'react'; 
 
 export default function Navbar() {
+  
+  // Estado para controlar si el usuario ha hecho scroll
+  const [scrolled, setScrolled] = useState(false);
+
+  const logoWidth = 100; 
+  const logoHeight = 100;
+
+  // Lógica para detectar el scroll
+  const handleScroll = () => {
+    // Si la posición vertical es mayor a 100px, activa el estado 'scrolled'
+    const offset = window.scrollY;
+    if (offset > 100) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  // Se ejecuta una vez al montar el componente para añadir el listener
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    
+    // Función de limpieza para remover el listener al desmontar el componente
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Clases CSS dinámicas
+  // Definimos las clases base y luego agregamos clases de scroll
+  const navbarClasses = `navbar navbar-expand-lg navbar-dark shadow-sm sticky-top 
+                         ${scrolled ? 'bg-dark-scrolled py-2' : 'bg-dark py-3'}`;
+
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top py-3">
+    // Aplicamos las clases dinámicas
+    <nav className={navbarClasses}>
       <div className="container">
-        {/* LOGO: Por ahora texto, luego ponemos la imagen del escudo */}
-        <Link className="navbar-brand fs-3 fw-bold text-uppercase tracking-wider " href="/">
-          CESPY
+        
+        {/* LOGO Y TEXTO DE MARCA AGRUPADOS */}
+        <Link className="navbar-brand d-flex align-items-center gap-2" href="/">
+          
+          <Image
+            src="/images/cespy.webp" 
+            alt="Logo CESPY"
+            width={logoWidth}   
+            height={logoHeight} 
+            priority           
+            // Estilo que asegura la nitidez y el tamaño definido por width/height
+            style={{ width: `${logoWidth}px`, height: `${logoHeight}px`, objectFit: 'contain' }}
+            className="d-inline-block"
+          />
+
+          <span className="fs-3 fw-bold text-uppercase tracking-wider">
+            CESPY
+          </span>
         </Link>
 
         {/* Botón Hamburguesa para Móvil */}
@@ -38,7 +91,7 @@ export default function Navbar() {
               <Link className="nav-link" href="/contacto">Contactos</Link>
             </li>
             
-            {/* Agregamos un botón de Login para el futuro Dashboard */}
+            {/* Botón de Acceso Personal */}
             <li className="nav-item ms-lg-3">
               <Link className="btn btn-outline-warning btn-sm fs-5 gap-3" href="/login">
                 Acceso Personal
@@ -50,4 +103,3 @@ export default function Navbar() {
     </nav>
   );
 }
-    

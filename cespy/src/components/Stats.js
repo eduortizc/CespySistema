@@ -1,4 +1,5 @@
 // src/components/Stats.js
+import AnimatedCounter from './AnimatedCounter'; // ¡Importa el nuevo componente!
 
 export default function Stats() {
   return (
@@ -7,33 +8,52 @@ export default function Stats() {
       <div className="container">
         <div className="row text-center g-4">
           
-          {/* Estadística 1 */}
+          {/* Estadística 1: Años de Experiencia (Animada) */}
           <div className="col-md-3 col-6">
             <div className="p-3 animate-fade-in-up">
-              <h2 className="display-4 fw-bold text-warning mb-0">12+</h2>
+              {/* Usa AnimatedCounter con el valor final '12' y el sufijo '+' */}
+              <AnimatedCounter 
+                endValue="12" 
+                suffix="+"
+                duration={2000} // Duración en milisegundos (2 segundos)
+                className="display-4 fw-bold text-warning mb-0"
+              />
               <p className="lead text-white-50 mb-0">Años de <br/>Experiencia</p>
             </div>
           </div>
 
-          {/* Estadística 2 */}
+          {/* Estadística 2: Clientes Satisfechos (Animada) */}
           <div className="col-md-3 col-6">
             <div className="p-3 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-              <h2 className="display-4 fw-bold text-warning mb-0">250+</h2>
+              {/* Usa AnimatedCounter con el valor final '250' y el sufijo '+' */}
+              <AnimatedCounter 
+                endValue="250" 
+                suffix="+"
+                duration={2500} // Un poco más lenta
+                className="display-4 fw-bold text-warning mb-0"
+              />
               <p className="lead text-white-50 mb-0">Clientes <br/>Satisfechos</p>
             </div>
           </div>
 
-           {/* Estadística 3 */}
-           <div className="col-md-3 col-6">
+          {/* Estadística 3: Personal Certificado (Animada) */}
+          <div className="col-md-3 col-6">
             <div className="p-3 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-              <h2 className="display-4 fw-bold text-warning mb-0">100%</h2>
+               {/* Usa AnimatedCounter con el valor final '100' y el sufijo '%' */}
+              <AnimatedCounter 
+                endValue="100" 
+                suffix="%"
+                duration={1500} // Más rápida
+                className="display-4 fw-bold text-warning mb-0"
+              />
               <p className="lead text-white-50 mb-0">Personal <br/>Certificado</p>
             </div>
           </div>
 
-           {/* Estadística 4 */}
-           <div className="col-md-3 col-6">
+          {/* Estadística 4: REPSE (Sin animación de contador) */}
+          <div className="col-md-3 col-6">
             <div className="p-3 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
+              {/* Se deja como h2 normal ya que no es un número a contar */}
               <h2 className="display-4 fw-bold text-warning mb-0">REPSE</h2>
               <p className="lead text-white-50 mb-0">Avalado por <br/>STPS</p>
             </div>
