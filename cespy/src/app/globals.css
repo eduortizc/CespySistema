@@ -32,3 +32,72 @@
 .bg-zoom-animation {
     animation: backgroundZoom 15s ease-in-out infinite alternate;
 }
+
+:root {
+  --cespy-yellow: #E0E258;
+  --cespy-blue: #0dcaf0;
+}
+
+.text-cespy {
+  color: var(--cespy-yellow) !important;
+}
+
+.btn-cespy {
+  background-color: var(--cespy-yellow) !important;
+  color: #000 !important; /* Letra negra */
+  border: none;
+  font-weight: bold;
+}
+.btn-cespy:hover {
+  background-color: #d1d352 !important; /* Un poco más oscuro al pasar el mouse */
+}
+/* Agrega esto en src/app/globals.css */
+
+/* Botón con borde (Outline) color Cespy */
+.btn-outline-cespy {
+  color: var(--cespy-yellow) !important;
+  border-color: var(--cespy-yellow) !important;
+  background: transparent;
+}
+.btn-outline-cespy:hover {
+  background-color: var(--cespy-yellow) !important;
+  color: #000 !important;
+}
+
+/* Fondo con opacidad para los iconos */
+.bg-cespy-subtle {
+  background-color: rgba(224, 226, 88, 0.2) !important; /* Tu amarillo pero transparente */
+  color: var(--cespy-yellow) !important;
+}
+
+.bg-cespy {
+  background-color: var(--cespy-yellow) !important;
+  color: #000 !important;
+}
+
+.border-cespy {
+  border-color: var(--cespy-yellow) !important;
+}
+.text-cespy-blue { color: var(--cespy-blue) !important; }
+.bg-cespy-blue { background-color: var(--cespy-blue) !important; color: #000 !important; }
+.border-cespy-blue { border-color: var(--cespy-blue) !important; }
+.btn-outline-cespy-blue {
+  color: var(--cespy-blue) !important;
+  border-color: var(--cespy-blue) !important;
+  background: transparent;
+}
+.btn-outline-cespy-blue:hover {
+  background-color: var(--cespy-blue) !important;
+  color: #000 !important;
+}
+
+/* --- EFECTO DE ZOOM (Hover Scale) --- */
+.hover-scale {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.05); /* Esto hace que crezca un 5% */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important; /* Sombra más fuerte al flotar */
+  z-index: 10;
+  cursor: pointer;
+}

@@ -82,6 +82,7 @@ export default function Hero() {
             </h5>
             
             {/* Elemento 2: Título Principal (Retraso 0.4s) */}
+            
             <h1 
               className="display-3 fw-bold mb-4 animate-fade-in-up" 
               style={{ animationDelay: '0.4s' }} 
@@ -107,6 +108,7 @@ export default function Hero() {
               <Link href="/contacto" className="btn btn-warning btn-lg px-4 fw-bold text-dark">
                 Cotizar Ahora
               </Link>
+              
               <Link href="/nosotros" className="btn btn-outline-light btn-lg px-4">
                 Conocer Servicios
               </Link>
