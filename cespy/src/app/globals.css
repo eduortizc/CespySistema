@@ -1,103 +1,259 @@
+/* ============================
+   ANIMACIONES
+============================ */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    /* Reducimos el desplazamiento vertical a 20px para un efecto más sutil */
-    transform: translate3d(0, 20px, 0); 
+    transform: translate3d(0, 20px, 0);
   }
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
 }
-
-/* Clase utilitaria para aplicar la animación */
 .animate-fade-in-up {
   animation-name: fadeInUp;
   animation-duration: 0.9s;
-  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* ease-out-quad/cubic */
-  animation-fill-mode: both; /* Mantiene el estado final al terminar */
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-fill-mode: both;
 }
-
-
 
 @keyframes backgroundZoom {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.03); 
-    }
+  0% { transform: scale(1); }
+  100% { transform: scale(1.03); }
 }
-
 .bg-zoom-animation {
-    animation: backgroundZoom 15s ease-in-out infinite alternate;
+  animation: backgroundZoom 15s ease-in-out infinite alternate;
 }
 
+/* ============================
+   COLORES CESPY
+============================ */
 :root {
   --cespy-yellow: #E0E258;
   --cespy-blue: #0dcaf0;
 }
 
-.text-cespy {
-  color: var(--cespy-yellow) !important;
-}
+.text-cespy { color: var(--cespy-yellow) !important; }
 
 .btn-cespy {
   background-color: var(--cespy-yellow) !important;
-  color: #000 !important; /* Letra negra */
+  color: #000 !important;
   border: none;
   font-weight: bold;
 }
-.btn-cespy:hover {
-  background-color: #d1d352 !important; /* Un poco más oscuro al pasar el mouse */
-}
-/* Agrega esto en src/app/globals.css */
 
-/* Botón con borde (Outline) color Cespy */
+.btn-cespy:hover {
+  background-color: #d1d352 !important;
+}
+
 .btn-outline-cespy {
   color: var(--cespy-yellow) !important;
   border-color: var(--cespy-yellow) !important;
-  background: transparent;
 }
+
 .btn-outline-cespy:hover {
   background-color: var(--cespy-yellow) !important;
   color: #000 !important;
 }
 
-/* Fondo con opacidad para los iconos */
-.bg-cespy-subtle {
-  background-color: rgba(224, 226, 88, 0.2) !important; /* Tu amarillo pero transparente */
-  color: var(--cespy-yellow) !important;
+/* ============================
+   WIDGET WHATSAPP
+============================ */
+.whatsapp-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+  background-color: #25d366;
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease-in-out;
+}
+.whatsapp-widget:hover {
+  transform: scale(1.1);
+}
+
+/* ============================
+   NAVBAR 100% TRANSPARENTE
+============================ */
+
+/* Navbar y todo dentro totalmente transparente */
+nav.navbar,
+.navbar,
+.navbar * {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Remover clases de Bootstrap que meten fondo */
+.navbar-dark,
+.navbar-light,
+.bg-light,
+.bg-white,
+.bg-body,
+.bg-body-tertiary {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Sin padding que genere banda blanca */
+.navbar {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Contenedor sin fondo */
+.navbar .container,
+.navbar .container-fluid {
+  background: transparent !important;
+}
+
+/* Icono hamburguesa blanco */
+.navbar-toggler-icon {
+  filter: invert(1) brightness(1000%);
+}
+
+/* ============================
+   EFECTO HOVER PARA LAS TARJETAS
+   ============================ */
+
+.hover-scale {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hover-scale:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+}
+
+/* Transición general */
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Colores CESPY */
+.text-cespy {
+  color: #f4d03f;
 }
 
 .bg-cespy {
-  background-color: var(--cespy-yellow) !important;
+  background-color: #f4d03f !important;
+}
+
+.btn-outline-cespy {
+  border: 2px solid #f4d03f !important;
+  color: #f4d03f !important;
+}
+
+.btn-outline-cespy:hover {
+  background-color: #f4d03f !important;
   color: #000 !important;
 }
 
-.border-cespy {
-  border-color: var(--cespy-yellow) !important;
+/* AZUL NEÓN */
+.text-cespy-blue {
+  color: #00aaff !important;
 }
-.text-cespy-blue { color: var(--cespy-blue) !important; }
-.bg-cespy-blue { background-color: var(--cespy-blue) !important; color: #000 !important; }
-.border-cespy-blue { border-color: var(--cespy-blue) !important; }
+
+.bg-cespy-blue {
+  background-color: #00aaff !important;
+}
+
 .btn-outline-cespy-blue {
-  color: var(--cespy-blue) !important;
-  border-color: var(--cespy-blue) !important;
-  background: transparent;
+  border: 2px solid #00aaff !important;
+  color: #00aaff !important;
 }
+
 .btn-outline-cespy-blue:hover {
-  background-color: var(--cespy-blue) !important;
+  background-color: #00aaff !important;
   color: #000 !important;
 }
 
-/* --- EFECTO DE ZOOM (Hover Scale) --- */
-.hover-scale {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* ============================
+   NAVBAR: LINKS EN CÍRCULOS
+============================ */
+.nav-circle {
+  border: 2px solid var(--cespy-yellow);
+  border-radius: 50px;          /* bien redondo */
+  padding: 8px 18px !important; /* tamaño del círculo */
+  transition: all 0.3s ease;
+  color: white !important;
 }
-.hover-scale:hover {
-  transform: scale(1.05); /* Esto hace que crezca un 5% */
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important; /* Sombra más fuerte al flotar */
-  z-index: 10;
-  cursor: pointer;
+
+/* Hover: fondo amarillo y texto negro */
+.nav-circle:hover {
+  background-color: var(--cespy-yellow) !important;
+  color: black !important;
+  transform: translateY(-2px);
+}
+
+/* Corrige que Bootstrap ponga subrayado o color azul */
+.nav-circle:focus,
+.nav-circle:active {
+  color: black !important;
+  background-color: var(--cespy-yellow) !important;
+}
+
+/* ===== Animaciones globales ===== */
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Aplicación rápida */
+.animate-up {
+  animation: fadeInUp 1s ease forwards;
+}
+
+.animate-zoom {
+  animation: zoomIn 0.8s ease forwards;
+}
+
+.animate-fade {
+  animation: fadeIn 1s ease forwards;
+}
+
+/* ===== Hover Effects ===== */
+
+.btn-hover-gold:hover {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
+.card-hover {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(255, 193, 7, 0.3);
+  border-color: #ffc107 !important;
+}
+
+/* Mapa borde animado */
+.map-border {
+  border: 3px solid #ffc107;
+  transition: 0.3s ease;
+}
+
+.map-border:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
 }

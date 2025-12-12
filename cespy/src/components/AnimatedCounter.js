@@ -4,21 +4,15 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
-// El componente AnimatedCounter recibe el valor final (que puede incluir un + o %), 
-// la duración, el prefijo/sufijo y las clases de estilo
 const AnimatedCounter = ({ endValue, duration = 2000, prefix = '', suffix = '', className = '' }) => {
-  // `count` puede ser un número (durante el conteo) o null (al finalizar)
+
   const [count, setCount] = useState(0); 
   const [isCounting, setIsCounting] = useState(false);
   const counterRef = useRef(null);
 
-  // Extraemos el número final para el cálculo, ignorando todo lo demás
-  // Usamos una expresión regular más segura para solo obtener dígitos
+
   const finalNumber = parseInt(endValue.replace(/[^\d]/g, ''), 10) || 0; 
   
-  // ===================================
-  // 1. OBSERVADOR DE INTERSECCIÓN (Sin cambios)
-  // ===================================
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -49,7 +43,7 @@ const AnimatedCounter = ({ endValue, duration = 2000, prefix = '', suffix = '', 
   }, [isCounting]);
 
   // ===================================
-  // 2. LÓGICA DEL CONTEO (Corregida)
+  // 2. LÓGICA DEL CONTEO (Animación suave usando requestAnimationFrame y Math.sin)
   // ===================================
   const startCounting = () => {
     const start = 0;
@@ -60,6 +54,8 @@ const AnimatedCounter = ({ endValue, duration = 2000, prefix = '', suffix = '', 
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / duration, 1);
 
+      // 💡 FUNCIÓN CLAVE: Math.sin crea una curva de aceleración suave (ease-out)
+      // El contador empieza lento y acelera hasta llegar al valor final.
       const currentValue = Math.floor(start + finalNumber * Math.sin(percentage * (Math.PI / 2)));
       
       setCount(currentValue);
@@ -67,6 +63,7 @@ const AnimatedCounter = ({ endValue, duration = 2000, prefix = '', suffix = '', 
       if (progress < duration) {
         requestAnimationFrame(step);
       } else {
+        // Al finalizar, asignamos la cadena completa original (ej. "12 años")
         setCount(endValue); 
       }
     };
@@ -74,12 +71,15 @@ const AnimatedCounter = ({ endValue, duration = 2000, prefix = '', suffix = '', 
     requestAnimationFrame(step);
   };
 
+  // ===================================
+  // 3. RENDERIZADO
+  // ===================================
   const displayedValue = count; 
 
   return (
     <h2 ref={counterRef} className={className}>
-      {/* Si el count es una cadena (el valor final), lo mostramos directamente.
-         Si es un número (durante el conteo), aún usamos prefix/suffix. */}
+      {/* Si displayedValue es una cadena (el valor final), lo mostramos directamente.
+          Si es un número (durante el conteo), usamos prefix/suffix. */}
       {typeof displayedValue === 'string' ? displayedValue : (
         <>
           {prefix}
