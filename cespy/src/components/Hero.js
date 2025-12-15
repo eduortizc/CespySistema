@@ -1,9 +1,31 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import TypewriterText from "./TypewriterText";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
+
+/* ============================
+   TYPEWRITER (INLINE, SIN ERROR)
+============================ */
+const TypewriterText = ({ text }) => {
+  const [displayed, setDisplayed] = useState("");
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i <= text.length) {
+        setDisplayed(text.slice(0, i));
+        i++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 60);
+
+    return () => clearInterval(interval);
+  }, [text]);
+
+  return <span className="text-warning">{displayed}</span>;
+};
 
 export default function Hero() {
   const [offsetY, setOffsetY] = useState(0);
@@ -17,10 +39,11 @@ export default function Hero() {
   return (
     <>
       {/* ============================
-          HERO
+          HERO (NO TOCAR)
       ============================ */}
       <section className="position-relative vh-100 d-flex align-items-center text-white overflow-hidden">
-        {/* Fondo con efecto parallax */}
+
+        {/* Fondo */}
         <div
           className="position-absolute top-0 start-0 w-100 h-100"
           style={{
@@ -32,7 +55,7 @@ export default function Hero() {
             transform: `translateY(${offsetY * 0.2}px)`,
             transition: "transform 0.1s linear",
           }}
-        ></div>
+        />
 
         <div className="container">
           <div className="col-lg-8">
@@ -46,8 +69,8 @@ export default function Hero() {
             </h1>
 
             <p className="lead mb-5 w-75 d-none d-md-block animate-fade-in-up">
-              Más de 12 años brindando servicios de seguridad física,
-              electrónica y custodia con personal altamente capacitado.
+              Más de 12 años brindando servicios de seguridad privada
+              con personal altamente capacitado.
             </p>
 
             <div className="d-flex gap-3 animate-fade-in-up">
@@ -55,7 +78,6 @@ export default function Hero() {
                 Cotizar Ahora
               </Link>
 
-              {/* Botón hacia sección Nosotros */}
               <a href="#nosotros" className="btn btn-outline-light btn-lg">
                 Nosotros
               </a>
@@ -69,34 +91,33 @@ export default function Hero() {
       ============================ */}
       <section
         id="nosotros"
-        className="py-5 bg-dark text-white position-relative"
+        className="py-5 text-white position-relative"
+        style={{ background: "#0f0f0f" }}
       >
-        <div className="decor-line top-line"></div>
-        <div className="decor-line bottom-line"></div>
-
         <div className="container text-center">
-          <h2 className="text-warning fw-bold mb-4">Sobre Nosotros</h2>
 
-          <p className="lead mb-5">
-            En <strong>CESPY</strong> ofrecemos servicios de seguridad privada,
-            vigilancia y custodia con profesionalismo y experiencia.
+          <h2 className="text-warning fw-bold mb-4">
+            Conócenos
+          </h2>
+
+          <p className="lead mb-5 text-white-50">
+            En <strong>CESPY</strong> brindamos servicios de seguridad privada,
+            vigilancia y custodia con profesionalismo, disciplina y confianza.
           </p>
 
-          {/* Contacto básico */}
           <div className="row g-4 justify-content-center">
             <div className="col-md-4">
-              <div className="p-4 rounded info-card">
-                <h3 className="text-warning">📞 Teléfono</h3>
-                <p className="fs-5">999 980 4155</p>
+              <div className="p-4 rounded-4 border border-warning bg-dark shadow-lg hover-card">
+                <h4 className="text-warning mb-2">📞 Teléfono</h4>
+                <p className="fs-5 mb-0">999 980 4155</p>
               </div>
             </div>
 
             <div className="col-md-4">
-              <div className="p-4 rounded info-card">
-                <h3 className="text-warning">📍 Ubicación</h3>
-                <p className="fs-5">
-                  Calle 65 #873 x 108 y 110
-                  <br />
+              <div className="p-4 rounded-4 border border-warning bg-dark shadow-lg hover-card">
+                <h4 className="text-warning mb-2">📍 Ubicación</h4>
+                <p className="fs-6 mb-0">
+                  Calle 65 #873 x 108 y 110<br />
                   Almendros 3, Ciudad Caucel
                 </p>
               </div>
@@ -106,13 +127,13 @@ export default function Hero() {
           {/* Mapa */}
           <div className="mt-5">
             <iframe
-              className="rounded shadow-lg"
+              className="rounded-4 shadow-lg"
               width="100%"
               height="350"
-              style={{ border: "2px solid yellow", borderRadius: "20px" }}
               loading="lazy"
+              style={{ border: "2px solid #ffc107" }}
               src="https://www.google.com/maps?q=Calle+65+873+Ciudad+Caucel&output=embed"
-            ></iframe>
+            />
           </div>
         </div>
       </section>
@@ -122,94 +143,38 @@ export default function Hero() {
       ============================ */}
       <section
         id="contactos"
-        className="py-5 bg-black text-white position-relative"
+        className="py-5 text-white"
+        style={{
+          background: "linear-gradient(135deg, #111, #1c1c1c)",
+        }}
       >
-        <div className="decor-line top-line"></div>
-        <div className="decor-line bottom-line"></div>
-
         <div className="container text-center">
-          <h2 className="text-warning fw-bold mb-4">Nuestros Contactos</h2>
+
+          <h2 className="text-warning fw-bold mb-5">
+            Nuestros Contactos
+          </h2>
 
           <div className="row g-4 justify-content-center">
-            <div className="col-md-3">
-              <div className="p-4 contact-card">
-                <h3 className="text-warning">📞 Teléfono 1</h3>
-                <p className="fs-5">+52 999 498 3427</p>
+            {[
+              "📞 +52 999 498 3427",
+              "📞 999 980 4155",
+              "📞 +52 999 438 8714",
+              "✉️ cespycorporativo@gmail.com",
+            ].map((item, i) => (
+              <div key={i} className="col-md-3">
+                <div className="p-4 rounded-4 bg-dark border border-warning shadow-lg hover-contact">
+                  <p className="fs-5 mb-0">{item}</p>
+                </div>
               </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="p-4 contact-card">
-                <h3 className="text-warning">📞 Teléfono 2</h3>
-                <p className="fs-5">999 980 4155</p>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="p-4 contact-card">
-                <h3 className="text-warning">📞 Teléfono 3</h3>
-                <p className="fs-5">+52 999 438 8714</p>
-              </div>
-            </div>
-
-            <div className="col-md-4">
-              <div className="p-4 contact-card">
-                <h3 className="text-warning">✉️ Correo</h3>
-                <p className="fs-5">cespycorporativo@gmail.com</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ============================
-          ESTILOS GLOBALES
+          WHATSAPP WIDGET
       ============================ */}
-      <style jsx>{`
-        /* Tarjetas Nosotros */
-        .info-card {
-          background: rgba(255, 255, 255, 0.05);
-          border: 2px solid yellow;
-          transition: 0.3s;
-        }
-        .info-card:hover {
-          transform: scale(1.05);
-          box-shadow: 0 0 20px gold;
-        }
-
-        /* Tarjetas Contactos */
-        .contact-card {
-          background: rgba(20, 20, 20, 0.7);
-          border: 2px solid yellow;
-          border-radius: 25px;
-          transition: 0.3s ease;
-        }
-        .contact-card:hover {
-          transform: scale(1.05);
-          background: linear-gradient(
-            135deg,
-            rgba(0, 0, 0, 0.9),
-            rgba(255, 215, 0, 0.25)
-          );
-          box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
-        }
-
-        /* Líneas amarillas decorativas */
-        .decor-line {
-          position: absolute;
-          left: 0;
-          width: 100%;
-          height: 4px;
-          background: linear-gradient(90deg, transparent, yellow, transparent);
-          opacity: 0.8;
-        }
-        .top-line {
-          top: 0;
-        }
-        .bottom-line {
-          bottom: 0;
-        }
-      `}</style>
+      <WhatsAppWidget />
     </>
   );
 }
