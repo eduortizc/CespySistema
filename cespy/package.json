@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "bootstrap": "^5.3.8",
+    "emailjs-com": "^3.2.0",
     "geist": "^1.5.1",
     "next": "16.0.7",
     "react": "19.2.0",

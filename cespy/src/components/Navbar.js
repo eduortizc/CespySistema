@@ -16,6 +16,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const whatsappMessage = "Hola, vengo desde el sitio web y quiero cotizar";
+
   return (
     <>
       <nav
@@ -24,7 +26,7 @@ export default function Navbar() {
         }`}
       >
         <div className="container-fluid px-3">
-          {/* Marca */}
+          {/* LOGO */}
           <Link
             href="/"
             className="navbar-brand d-flex align-items-center gap-2"
@@ -34,7 +36,7 @@ export default function Navbar() {
               alt="Logo CESPY"
               width={55}
               height={55}
-              style={{ objectFit: "contain" }}
+              priority
             />
             <span className="fs-3 fw-bold">CESPY</span>
           </Link>
@@ -49,10 +51,10 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          {/* Links */}
+          {/* LINKS */}
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto gap-3 fs-5">
-              <li>
+            <ul className="navbar-nav ms-auto gap-3 fs-5 align-items-center">
+              <li className="nav-item">
                 <a
                   href="#inicio"
                   className="btn btn-outline-light btn-lg btn-hover-gold"
@@ -61,7 +63,7 @@ export default function Navbar() {
                 </a>
               </li>
 
-              <li>
+              <li className="nav-item">
                 <a
                   href="#nosotros"
                   className="btn btn-outline-light btn-lg btn-hover-gold"
@@ -70,7 +72,7 @@ export default function Navbar() {
                 </a>
               </li>
 
-              <li>
+              <li className="nav-item">
                 <a
                   href="#contactos"
                   className="btn btn-outline-light btn-lg btn-hover-gold"
@@ -78,12 +80,32 @@ export default function Navbar() {
                   Contactos
                 </a>
               </li>
+
+              {/* WHATSAPP JUNTO A CONTACTOS */}
+              <li className="nav-item">
+                <a
+                  href={`https://wa.me/529994983427?text=${encodeURIComponent(
+                    whatsappMessage
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-success btn-lg d-flex align-items-center gap-2"
+                >
+                  <Image
+                    src="/images/whatsapp.png"
+                    alt="WhatsApp"
+                    width={24}
+                    height={24}
+                  />
+                  WhatsApp
+                </a>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
 
-      {/* ESTILOS SOLO PARA EL EFECTO */}
+      {/* ESTILOS */}
       <style jsx>{`
         .navbar-transparent {
           background: transparent !important;

@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import WhatsAppWidget from "@/components/WhatsAppWidget";
+import Contactos from "@/components/Contactos";
 
 /* ============================
-   TYPEWRITER (INLINE, SIN ERROR)
+   TYPEWRITER TEXT
 ============================ */
 const TypewriterText = ({ text }) => {
   const [displayed, setDisplayed] = useState("");
@@ -27,6 +27,9 @@ const TypewriterText = ({ text }) => {
   return <span className="text-warning">{displayed}</span>;
 };
 
+/* ============================
+   HERO + CONTACTOS
+============================ */
 export default function Hero() {
   const [offsetY, setOffsetY] = useState(0);
 
@@ -39,15 +42,14 @@ export default function Hero() {
   return (
     <>
       {/* ============================
-          HERO (NO TOCAR)
+          HERO
       ============================ */}
       <section className="position-relative vh-100 d-flex align-items-center text-white overflow-hidden">
-
         {/* Fondo */}
         <div
           className="position-absolute top-0 start-0 w-100 h-100"
           style={{
-            backgroundImage: "url('/images/2 (1).png')",
+            backgroundImage: "url('/images/cespyfondo.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             zIndex: -1,
@@ -69,12 +71,16 @@ export default function Hero() {
             </h1>
 
             <p className="lead mb-5 w-75 d-none d-md-block animate-fade-in-up">
-              Más de 12 años brindando servicios de seguridad privada
-              con personal altamente capacitado.
+              Más de 12 años brindando servicios de seguridad privada con
+              personal altamente capacitado.
             </p>
 
             <div className="d-flex gap-3 animate-fade-in-up">
-              <Link href="/contacto" className="btn btn-warning btn-lg fw-bold">
+              <Link
+                href="https://wa.me/529994983427?text=Hola%20quiero%20cotizar"
+                target="_blank"
+                className="btn btn-warning btn-lg fw-bold"
+              >
                 Cotizar Ahora
               </Link>
 
@@ -87,18 +93,15 @@ export default function Hero() {
       </section>
 
       {/* ============================
-          SECCIÓN NOSOTROS
+          NOSOTROS
       ============================ */}
       <section
         id="nosotros"
-        className="py-5 text-white position-relative"
+        className="py-5 text-white"
         style={{ background: "#0f0f0f" }}
       >
         <div className="container text-center">
-
-          <h2 className="text-warning fw-bold mb-4">
-            Conócenos
-          </h2>
+          <h2 className="text-warning fw-bold mb-4">Conócenos</h2>
 
           <p className="lead mb-5 text-white-50">
             En <strong>CESPY</strong> brindamos servicios de seguridad privada,
@@ -117,14 +120,14 @@ export default function Hero() {
               <div className="p-4 rounded-4 border border-warning bg-dark shadow-lg hover-card">
                 <h4 className="text-warning mb-2">📍 Ubicación</h4>
                 <p className="fs-6 mb-0">
-                  Calle 65 #873 x 108 y 110<br />
+                  Calle 65 #873 x 108 y 110 <br />
                   Almendros 3, Ciudad Caucel
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Mapa */}
+          {/* MAPA */}
           <div className="mt-5">
             <iframe
               className="rounded-4 shadow-lg"
@@ -139,42 +142,9 @@ export default function Hero() {
       </section>
 
       {/* ============================
-          SECCIÓN CONTACTOS
+          CONTACTOS
       ============================ */}
-      <section
-        id="contactos"
-        className="py-5 text-white"
-        style={{
-          background: "linear-gradient(135deg, #111, #1c1c1c)",
-        }}
-      >
-        <div className="container text-center">
-
-          <h2 className="text-warning fw-bold mb-5">
-            Nuestros Contactos
-          </h2>
-
-          <div className="row g-4 justify-content-center">
-            {[
-              "📞 +52 999 498 3427",
-              "📞 999 980 4155",
-              "📞 +52 999 438 8714",
-              "✉️ cespycorporativo@gmail.com",
-            ].map((item, i) => (
-              <div key={i} className="col-md-3">
-                <div className="p-4 rounded-4 bg-dark border border-warning shadow-lg hover-contact">
-                  <p className="fs-5 mb-0">{item}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================
-          WHATSAPP WIDGET
-      ============================ */}
-      <WhatsAppWidget />
+      <Contactos />
     </>
   );
 }
