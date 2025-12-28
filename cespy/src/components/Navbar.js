@@ -18,6 +18,14 @@ export default function Navbar() {
 
   const whatsappMessage = "Hola, vengo desde el sitio web y quiero cotizar";
 
+  // 👉 CIERRA EL MENÚ EN MOBILE (EVITA DOBLE CLICK)
+  const handleNavClick = () => {
+    const navbar = document.getElementById("navbarNav");
+    if (navbar && navbar.classList.contains("show")) {
+      navbar.classList.remove("show");
+    }
+  };
+
   return (
     <>
       <nav
@@ -25,9 +33,12 @@ export default function Navbar() {
           scrolled ? "navbar-scrolled" : "navbar-transparent"
         }`}
       >
-        <div className="container-fluid px-4">
+        <div className="container-fluid px-3">
           {/* LOGO */}
-          <Link href="/" className="navbar-brand d-flex align-items-center gap-2">
+          <Link
+            href="/"
+            className="navbar-brand d-flex align-items-center gap-2"
+          >
             <Image
               src="/images/cespy.webp"
               alt="Logo CESPY"
@@ -50,26 +61,41 @@ export default function Navbar() {
 
           {/* LINKS */}
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto align-items-center gap-3 fs-5">
+            <ul className="navbar-nav ms-auto gap-3 fs-5 align-items-center">
               <li className="nav-item">
-                <a href="#inicio" className="nav-link">
+                <Link
+                  href="/#incio"
+                  scroll={true}
+                  onClick={handleNavClick}
+                  className="btn btn-outline-light btn-lg btn-hover-gold"
+                >
                   Inicio
-                </a>
+                </Link>
               </li>
 
               <li className="nav-item">
-                <a href="#nosotros" className="nav-link">
+                <Link
+                  href="/#nosotros"
+                  scroll={true}
+                  onClick={handleNavClick}
+                  className="btn btn-outline-light btn-lg btn-hover-gold"
+                >
                   Nosotros
-                </a>
+                </Link>
               </li>
 
               <li className="nav-item">
-                <a href="#contactos" className="nav-link">
+                <Link
+                  href="/#contactos"
+                  scroll={true}
+                  onClick={handleNavClick}
+                  className="btn btn-outline-light btn-lg btn-hover-gold"
+                >
                   Contactos
-                </a>
+                </Link>
               </li>
 
-              {/* WHATSAPP VERDE REAL */}
+              {/* WHATSAPP */}
               <li className="nav-item">
                 <a
                   href={`https://wa.me/529994983427?text=${encodeURIComponent(
@@ -87,7 +113,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* STYLES */}
+      {/* ESTILOS */}
       <style jsx>{`
         .navbar-transparent {
           background: transparent !important;
@@ -101,18 +127,19 @@ export default function Navbar() {
           transition: all 0.35s ease;
         }
 
-        /* 🔥 WHATSAPP REAL */
+        /* WHATSAPP VERDE */
         .whatsapp-btn {
           background-color: #25d366 !important;
           color: #ffffff !important;
-          padding: 10px 22px !important;
-          border-radius: 999px !important;
+          padding: 8px 40px !important;
+          border-radius: 500px !important;
           font-weight: 600;
-          line-height: normal;
+          letter-spacing: 0.5px;
           display: inline-flex !important;
           align-items: center;
           justify-content: center;
-          transition: all 0.3s ease;
+          transition: background-color 0.25s ease,
+            box-shadow 0.25s ease, transform 0.25s ease;
         }
 
         .whatsapp-btn:hover {

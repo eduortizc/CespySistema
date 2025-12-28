@@ -31,7 +31,7 @@ export default function Footer() {
             <h5 className="text-cespy mb-4">Páginas</h5>
             <ul className="list-unstyled text-white-50">
               <li className="mb-2">
-                <Link className="nav-link nav-circle px-3" href="/#incio">
+                <Link className="nav-link nav-circle px-3" href="/#inicio">
                   Inicio
                 </Link>
               </li>
