@@ -25,12 +25,9 @@ export default function Navbar() {
           scrolled ? "navbar-scrolled" : "navbar-transparent"
         }`}
       >
-        <div className="container-fluid px-3">
+        <div className="container-fluid px-4">
           {/* LOGO */}
-          <Link
-            href="/"
-            className="navbar-brand d-flex align-items-center gap-2"
-          >
+          <Link href="/" className="navbar-brand d-flex align-items-center gap-2">
             <Image
               src="/images/cespy.webp"
               alt="Logo CESPY"
@@ -41,7 +38,7 @@ export default function Navbar() {
             <span className="fs-3 fw-bold">CESPY</span>
           </Link>
 
-          {/* Botón hamburguesa */}
+          {/* TOGGLER */}
           <button
             className="navbar-toggler"
             type="button"
@@ -53,35 +50,26 @@ export default function Navbar() {
 
           {/* LINKS */}
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto gap-3 fs-5 align-items-center">
+            <ul className="navbar-nav ms-auto align-items-center gap-3 fs-5">
               <li className="nav-item">
-                <a
-                  href="#inicio"
-                  className="btn btn-outline-light btn-lg btn-hover-gold"
-                >
+                <a href="#inicio" className="nav-link">
                   Inicio
                 </a>
               </li>
 
               <li className="nav-item">
-                <a
-                  href="#nosotros"
-                  className="btn btn-outline-light btn-lg btn-hover-gold"
-                >
+                <a href="#nosotros" className="nav-link">
                   Nosotros
                 </a>
               </li>
 
               <li className="nav-item">
-                <a
-                  href="#contactos"
-                  className="btn btn-outline-light btn-lg btn-hover-gold"
-                >
+                <a href="#contactos" className="nav-link">
                   Contactos
                 </a>
               </li>
 
-              {/* WHATSAPP JUNTO A CONTACTOS */}
+              {/* WHATSAPP VERDE REAL */}
               <li className="nav-item">
                 <a
                   href={`https://wa.me/529994983427?text=${encodeURIComponent(
@@ -89,14 +77,8 @@ export default function Navbar() {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-success btn-lg d-flex align-items-center gap-2"
+                  className="nav-link whatsapp-btn"
                 >
-                  <Image
-                    src="/images/whatsapp.png"
-                    alt="WhatsApp"
-                    width={24}
-                    height={24}
-                  />
                   WhatsApp
                 </a>
               </li>
@@ -105,7 +87,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* ESTILOS */}
+      {/* STYLES */}
       <style jsx>{`
         .navbar-transparent {
           background: transparent !important;
@@ -113,10 +95,30 @@ export default function Navbar() {
         }
 
         .navbar-scrolled {
-          background: rgba(40, 40, 40, 0.95) !important;
+          background: #0f0f0f !important;
           backdrop-filter: blur(6px);
           box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
           transition: all 0.35s ease;
+        }
+
+        /* 🔥 WHATSAPP REAL */
+        .whatsapp-btn {
+          background-color: #25d366 !important;
+          color: #ffffff !important;
+          padding: 10px 22px !important;
+          border-radius: 999px !important;
+          font-weight: 600;
+          line-height: normal;
+          display: inline-flex !important;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+          background-color: #1ebe5d !important;
+          box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+          transform: translateY(-1px);
         }
       `}</style>
     </>
