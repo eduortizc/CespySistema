@@ -9,6 +9,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
+      // Activamos el efecto cristal cuando bajas más de 50px
       setScrolled(window.scrollY > 50);
     };
 
@@ -18,11 +19,14 @@ export default function Navbar() {
 
   const whatsappMessage = "Hola, vengo desde el sitio web y quiero cotizar";
 
-  // 👉 CIERRA EL MENÚ EN MOBILE (EVITA DOBLE CLICK)
+  // Cierra el menú en móvil al hacer clic
   const handleNavClick = () => {
-    const navbar = document.getElementById("navbarNav");
-    if (navbar && navbar.classList.contains("show")) {
-      navbar.classList.remove("show");
+    if (typeof window !== "undefined") {
+      const navbar = document.getElementById("navbarNav");
+      if (navbar && navbar.classList.contains("show")) {
+        // Bootstrap 5 maneja esto via JS, pero forzamos el cierre quitando la clase
+        navbar.classList.remove("show");
+      }
     }
   };
 
@@ -33,7 +37,7 @@ export default function Navbar() {
           scrolled ? "navbar-scrolled" : "navbar-transparent"
         }`}
       >
-        <div className="container-fluid px-3">
+        <div className="container">
           {/* LOGO */}
           <Link
             href="/"
@@ -45,29 +49,32 @@ export default function Navbar() {
               width={55}
               height={55}
               priority
+              style={{ objectFit: "contain" }}
             />
-            <span className="fs-3 fw-bold">CESPY</span>
+            <span className="fs-3 fw-bold letter-spacing-1">CESPY</span>
           </Link>
 
-          {/* TOGGLER */}
+          {/* TOGGLER (HAMBURGUESA) */}
           <button
-            className="navbar-toggler"
+            className="navbar-toggler border-0"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
 
           {/* LINKS */}
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto gap-3 fs-5 align-items-center">
+            <ul className="navbar-nav ms-auto gap-3 fs-5 align-items-center text-center mt-3 mt-lg-0">
               <li className="nav-item">
                 <Link
-                  href="/#incio"
-                  scroll={true}
+                  href="/#inicio"
+                  className="nav-link btn-hover-effect"
                   onClick={handleNavClick}
-                  className="btn btn-outline-light btn-lg btn-hover-gold"
                 >
                   Inicio
                 </Link>
@@ -76,9 +83,8 @@ export default function Navbar() {
               <li className="nav-item">
                 <Link
                   href="/#nosotros"
-                  scroll={true}
+                  className="nav-link btn-hover-effect"
                   onClick={handleNavClick}
-                  className="btn btn-outline-light btn-lg btn-hover-gold"
                 >
                   Nosotros
                 </Link>
@@ -86,26 +92,35 @@ export default function Navbar() {
 
               <li className="nav-item">
                 <Link
-                  href="/#contactos"
-                  scroll={true}
+                  href="/#servicios"
+                  className="nav-link btn-hover-effect"
                   onClick={handleNavClick}
-                  className="btn btn-outline-light btn-lg btn-hover-gold"
                 >
-                  Contactos
+                  Servicios
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link
+                  href="/#contactos"
+                  className="nav-link btn-hover-effect"
+                  onClick={handleNavClick}
+                >
+                  Contáctanos
                 </Link>
               </li>
 
               {/* WHATSAPP */}
-              <li className="nav-item">
+              <li className="nav-item mt-2 mt-lg-0">
                 <a
                   href={`https://wa.me/529994983427?text=${encodeURIComponent(
                     whatsappMessage
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="nav-link whatsapp-btn"
+                  className="btn btn-success rounded-pill px-4 fw-bold d-flex align-items-center justify-content-center gap-2 whatsapp-glow"
                 >
-                  WhatsApp
+                  <span>WhatsApp</span>
                 </a>
               </li>
             </ul>
@@ -115,37 +130,60 @@ export default function Navbar() {
 
       {/* ESTILOS */}
       <style jsx>{`
+        /* 1. BARRA TRANSPARENTE (Al inicio/Hero) */
         .navbar-transparent {
           background: transparent !important;
-          transition: all 0.35s ease;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          transition: all 0.4s ease;
         }
 
+        /* 2. BARRA "CAMALEÓN" (Al bajar) */
         .navbar-scrolled {
-          background: #0f0f0f !important;
-          backdrop-filter: blur(6px);
-          box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
-          transition: all 0.35s ease;
+          /* TRUCO: Usamos negro al 75% de opacidad. 
+             Esto permite que se vea el color de fondo (gris, degradado, etc.) 
+             a través de la barra. */
+          background-color: rgba(0, 0, 0, 0.75) !important;
+          
+          /* EFECTO CRISTAL: Desenfoca lo que pasa por detrás */
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px); /* Para Safari */
+
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+          padding-top: 10px;
+          padding-bottom: 10px;
+          transition: all 0.4s ease;
         }
 
-        /* WHATSAPP VERDE */
-        .whatsapp-btn {
-          background-color: #25d366 !important;
-          color: #ffffff !important;
-          padding: 8px 40px !important;
-          border-radius: 500px !important;
-          font-weight: 600;
-          letter-spacing: 0.5px;
-          display: inline-flex !important;
-          align-items: center;
-          justify-content: center;
-          transition: background-color 0.25s ease,
-            box-shadow 0.25s ease, transform 0.25s ease;
+        /* Estilo para los links normales */
+        .nav-link {
+          color: rgba(255,255,255,0.85) !important;
+          font-weight: 500;
+          transition: color 0.3s;
+        }
+        .nav-link:hover {
+          color: #ffc107 !important; /* Amarillo al pasar el mouse */
         }
 
-        .whatsapp-btn:hover {
+        /* Botón de WhatsApp con brillo */
+        .whatsapp-glow {
+          box-shadow: 0 0 10px rgba(37, 211, 102, 0.3);
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .whatsapp-glow:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
           background-color: #1ebe5d !important;
-          box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
-          transform: translateY(-1px);
+        }
+
+        /* Ajuste para móvil: Fondo sólido en el menú desplegable para leer bien */
+        @media (max-width: 991px) {
+          .navbar-collapse {
+            background-color: rgba(0,0,0,0.95);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 10px;
+          }
         }
       `}</style>
     </>

@@ -1,16 +1,19 @@
 
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import Stats from "@/components/Stats";
 import Footer from "@/components/Footer";
+import Contactos from "@/components/Contactos";
+import Promotions from "@/components/Promotions";
+import AboutUs from "@/components/AboutUs";
 export default function Home() {
   return (
     <main>
-      <Hero />
+      <Hero/>
+      <Promotions/> 
+      <AboutUs/>
       <Services/>
-      <Stats/>
+      <Contactos/>
       <Footer/>
-      {/* Aquí pondremos los demás componentes después */}
     </main>
   );
 }
