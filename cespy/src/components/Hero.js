@@ -53,7 +53,7 @@ export default function Hero() {
             backgroundSize: "cover",
             backgroundPosition: "center",
             zIndex: -1,
-            filter: "brightness(0.45)",
+            filter: "brightness(0.50)",
             transform: `translateY(${offsetY * 0.2}px)`,
             transition: "transform 0.1s linear",
           }}
@@ -76,13 +76,12 @@ export default function Hero() {
             </p>
 
             <div className="d-flex gap-3 animate-fade-in-up">
-              <Link
-                href="https://wa.me/529994983427?text=Hola%20quiero%20cotizar"
-                target="_blank"
+              <a
+                href="#servicios"
                 className="btn btn-warning btn-lg fw-bold"
               >
-                Cotizar Ahora
-              </Link>
+                Más información
+              </a>
 
               <a href="#nosotros" className="btn btn-outline-light btn-lg">
                 Nosotros
@@ -91,60 +90,6 @@ export default function Hero() {
           </div>
         </div>
       </section>
-
-      {/* ============================
-          NOSOTROS
-      ============================ */}
-      <section
-        id="nosotros"
-        className="py-5 text-white"
-        style={{ background: "#0f0f0f" }}
-      >
-        <div className="container text-center">
-          <h2 className="text-warning fw-bold mb-4">Conócenos</h2>
-
-          <p className="lead mb-5 text-white-50">
-            En <strong>CESPY</strong> brindamos servicios de seguridad privada,
-            vigilancia y custodia con profesionalismo, disciplina y confianza.
-          </p>
-
-          <div className="row g-4 justify-content-center">
-            <div className="col-md-4">
-              <div className="p-4 rounded-4 border border-warning bg-dark shadow-lg hover-card">
-                <h4 className="text-warning mb-2">📞 Teléfono</h4>
-                <p className="fs-5 mb-0">999 980 4155</p>
-              </div>
-            </div>
-
-            <div className="col-md-4">
-              <div className="p-4 rounded-4 border border-warning bg-dark shadow-lg hover-card">
-                <h4 className="text-warning mb-2">📍 Ubicación</h4>
-                <p className="fs-6 mb-0">
-                  Calle 65 #873 x 108 y 110 <br />
-                  Almendros 3, Ciudad Caucel
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* MAPA */}
-          <div className="mt-5">
-            <iframe
-              className="rounded-4 shadow-lg"
-              width="100%"
-              height="350"
-              loading="lazy"
-              style={{ border: "2px solid #ffc107" }}
-              src="https://www.google.com/maps?q=Calle+65+873+Ciudad+Caucel&output=embed"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ============================
-          CONTACTOS
-      ============================ */}
-      <Contactos />
     </>
   );
 }
