@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="d-flex gap-3">
               {/* FACEBOOK */}
               <a
-                href="https://www.facebook.com/corporativo.cespy.de.yucatan?locale=es_LA"
+                href="https://www.facebook.com/share/1GDjJGMUT6/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center"
