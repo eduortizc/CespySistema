@@ -21,7 +21,7 @@ export default function Services() {
           </h3>
           <h2 className="display-4 fw-bold mb-4">Seguridad Privada</h2>
           <p className="fs-5 text-white-50">
-            Cobertura en <strong>Mérida, Cancún y Campeche</strong>. 
+            Cobertura en <strong>en todo el sureste mexicano</strong>. 
             Contamos con protocolos robustos y, además, <strong>nos adaptamos a los requerimientos específicos</strong> de tu entorno.
           </p>
         </div>
