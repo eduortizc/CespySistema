@@ -74,6 +74,10 @@ export default function Hero() {
               Más de 12 años brindando servicios de seguridad privada con
               personal altamente capacitado.
             </p>
+                        <h5 className="text-warning mb-3 animate-fade-in-up">
+              Cobertura en <strong>todo el sureste mexicano</strong>.
+            </h5>
+
 
              <h5 className="text-warning mb-3 animate-fade-in-up">
               Cobertura en <strong>todo el sureste mexicano</strong>.
@@ -90,8 +94,11 @@ export default function Hero() {
               <a href="#nosotros" className="btn btn-outline-light btn-lg">
                 Nosotros
               </a>
+              
             </div>
+            
           </div>
+          
         </div>
       </section>
     </>
