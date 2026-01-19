@@ -75,6 +75,10 @@ export default function Hero() {
               personal altamente capacitado.
             </p>
 
+             <h5 className="text-warning mb-3 animate-fade-in-up">
+              Cobertura en <strong>todo el sureste mexicano</strong>.
+            </h5>
+
             <div className="d-flex gap-3 animate-fade-in-up">
               <a
                 href="#servicios"
