@@ -11,11 +11,10 @@ export default function AboutUs() {
       // CAMBIO 1: Degradado elegante de Negro (#000) a Gris Oscuro (#1a1a1a)
       // Esto prepara visualmente la página para la siguiente sección.
       style={{
-        background: "linear-gradient(to bottom, #000000 0%, #1a1a1a 100%)"
+        background: "linear-gradient(to bottom, #000000 0%, #1a1a1a 100%)",
       }}
     >
       <div className="container py-4">
-
         {/* 1. ENCABEZADO */}
         <div className="mb-5 text-center mx-auto" style={{ maxWidth: "900px" }}>
           <h5 className="text-warning text-uppercase letter-spacing-2 mb-3">
@@ -62,7 +61,11 @@ export default function AboutUs() {
               A través de nuestro servicio tendrás la garantía de un <strong className="text-white">diseño especial de estrategia</strong> para tu seguridad.
             </p>
             <p className="fs-5 text-white-50 lh-lg">
-              No improvisamos. <strong>Gestionamos toda la documentación necesaria</strong> para brindarle a nuestros clientes la seguridad correspondiente. Además, buscamos que nuestros elementos estén capacitados en todos los aspectos operativos y legales.
+              No improvisamos.{" "}
+              <strong>Gestionamos toda la documentación necesaria</strong> para
+              brindarle a nuestros clientes la seguridad correspondiente.
+              Además, buscamos que nuestros elementos estén capacitados en todos
+              los aspectos operativos y legales.
             </p>
           </div>
 
@@ -72,7 +75,8 @@ export default function AboutUs() {
               Sectores que Abarcamos
             </h3>
             <p className="fs-5 text-white-50 mb-4">
-              Entendemos que cada entorno requiere un protocolo distinto. Por eso, abarcamos diferentes áreas especializadas como:
+              Entendemos que cada entorno requiere un protocolo distinto. Por
+              eso, abarcamos diferentes áreas especializadas como:
             </p>
 
             <ul className="list-unstyled fs-5 text-white-50 lh-lg ps-2">
@@ -93,7 +97,8 @@ export default function AboutUs() {
                 <span>Sector <strong className="text-white">Comercial</strong> (Plazas y Negocios)</span>
               </li>
               <li className="mt-4 pt-3 border-top border-secondary fst-italic">
-                ...entre otros servicios personalizados según el giro de tu empresa.
+                ...entre otros servicios personalizados según el giro de tu
+                empresa.
               </li>
             </ul>
           </div>
@@ -105,7 +110,9 @@ export default function AboutUs() {
             <div className="d-flex align-items-center bg-dark p-4 rounded-4 h-100 border border-secondary shadow">
               <div className="fs-1 me-4">📞</div>
               <div>
-                <p className="text-warning text-uppercase mb-1 small">Contáctanos</p>
+                <p className="text-warning text-uppercase mb-1 small">
+                  Contáctanos
+                </p>
                 <p className="fs-3 fw-bold mb-0 text-white">999 980 4155</p>
               </div>
             </div>
@@ -114,7 +121,9 @@ export default function AboutUs() {
             <div className="d-flex align-items-center bg-dark p-4 rounded-4 h-100 border border-secondary shadow">
               <div className="fs-1 me-4">📍</div>
               <div>
-                <p className="text-warning text-uppercase mb-1 small">Visítanos</p>
+                <p className="text-warning text-uppercase mb-1 small">
+                  Visítanos
+                </p>
                 <p className="fs-5 mb-0 text-white">
                   Calle 65 #873 x 108 y 110, Almendros 3, <br /> Ciudad Caucel
                 </p>
@@ -127,15 +136,14 @@ export default function AboutUs() {
         <div className="rounded-4 overflow-hidden shadow-lg border border-secondary">
           <iframe
             title="Ubicación CESPY"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3724.854127778277!2d-89.72426982474423!3d20.99848368064323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDU5JzU0LjUiTiA4OcKwNDMnMTguMSJX!5e0!3m2!1sen!2smx!4v1767162048106!5m2!1sen!2smx"
             width="100%"
             height="450"
             style={{ border: 0, display: "block" }}
             loading="lazy"
             allowFullScreen
-            src="https://maps.google.com/maps?q=Calle+65+873+Almendros+3+Ciudad+Caucel+Merida&t=&z=16&ie=UTF8&iwloc=&output=embed"
           ></iframe>
         </div>
-
       </div>
     </section>
   );
