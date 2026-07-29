@@ -129,7 +129,7 @@ a.secondary {
 
   .page {
     --background: #000;
-    --foreground: #000;
+    --foreground: #ededed;
 
     --text-primary: #ededed;
     --text-secondary: #999;

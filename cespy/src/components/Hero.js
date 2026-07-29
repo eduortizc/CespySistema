@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Contactos from "@/components/Contactos";
 
@@ -49,15 +50,34 @@ export default function Hero() {
         <div
           className="position-absolute top-0 start-0 w-100 h-100"
           style={{
-            backgroundImage: "url('/images/cespyfondo.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
             zIndex: -1,
-            filter: "brightness(0.50)",
             transform: `translateY(${offsetY * 0.2}px)`,
             transition: "transform 0.1s linear",
+            backgroundColor: "#000",
           }}
-        />
+        >
+          <Image
+            src="/images/cespyfondo.jpg"
+            alt="Fondo de Seguridad Privada"
+            fill
+            priority
+            style={{
+              objectFit: "cover",
+              objectPosition: "center",
+              filter: "brightness(0.50)",
+            }}
+            quality={85}
+          />
+          {/* Difuminado hacia abajo para conectar con el fondo negro de la siguiente sección */}
+          <div 
+            className="position-absolute bottom-0 start-0 w-100"
+            style={{
+              height: "25vh",
+              background: "linear-gradient(to bottom, transparent 0%, #000000 100%)",
+              zIndex: 1
+            }}
+          />
+        </div>
 
         <div className="container">
           <div className="col-lg-8">
@@ -71,7 +91,7 @@ export default function Hero() {
             </h1>
 
             <p className="lead mb-5 w-75 d-none d-md-block animate-fade-in-up">
-              Más de 12 años brindando servicios de seguridad privada con
+              Más de 6 años brindando servicios de seguridad privada con
               personal altamente capacitado.
             </p>
                         <h5 className="text-warning mb-3 animate-fade-in-up">
