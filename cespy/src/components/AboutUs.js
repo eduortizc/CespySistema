@@ -33,7 +33,7 @@ export default function AboutUs() {
         {/* 2. ESTADÍSTICAS */}
         <div className="row text-center mb-5 border-top border-bottom border-secondary py-5">
           <div className="col-6 col-md-3 mb-4 mb-md-0">
-            <span className="display-4 fw-bold text-warning">12+</span>
+            <span className="display-4 fw-bold text-warning">6+</span>
             <p className="fs-5 text-white mt-2">Años de Experiencia</p>
           </div>
           <div className="col-6 col-md-3 mb-4 mb-md-0">
