@@ -71,7 +71,7 @@ export default function Hero() {
             </h1>
 
             <p className="lead mb-5 w-75 d-none d-md-block animate-fade-in-up">
-              Más de 12 años brindando servicios de seguridad privada con
+              Más de 6 años brindando servicios de seguridad privada con
               personal altamente capacitado.
             </p>
 
